@@ -98,6 +98,40 @@ describe('BloodPressure Function Tests', () => {
     test('Systolic Less Than Diastolic', () => {
       expect(() => BloodPressure("John Doe", 35, 120, 130)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
     });
+
+    test('Non-integer Age', () => {
+      expect(() => BloodPressure("John Doe", 35.5, 120, 80)).toThrow('Age must be an integer.');
+    });
+
+    test('Systolic grater then 120', () => {
+      expect(() => BloodPressure("John Doe", 35, 121, 80)).not.toThrow();
+    });
+    test('Systolic grater then 160', () => {
+      expect(() => BloodPressure("John Doe", 35, 170, 80)).not.toThrow();
+    });
+      test('Systolic greater then 180', () => {
+        expect(() => BloodPressure("John Doe", 35, 181, 80)).not.toThrow();
   });
+
+ test('Systolic greater then 180', () => {
+        expect(() => BloodPressure("John Doe", 35, 181, 80)).not.toThrow();
+ });
+
+ test('Diatolic greater then 120', () => {
+  expect(() => BloodPressure("John Doe", 35, 60, 121)).not.toThrow();
+});
+
+test('Diatolic greater then 90', () => {
+  expect(() => BloodPressure("John Doe", 35, 60, 90)).not.toThrow();
+});
+
+test('Diatolic greater then 110', () => {
+  expect(() => BloodPressure("John Doe", 35, 60, 110)).not.toThrow();
+});
+
+test('Diatolic less then 80', () => {
+  expect(() => BloodPressure("John Doe", 35, 60, 79)).not.toThrow();
+});
+
 
 });
