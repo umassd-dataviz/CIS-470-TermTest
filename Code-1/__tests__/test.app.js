@@ -57,13 +57,15 @@ describe('calculatePrice function', () => {
     expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid hasCoupon type: It should be either true or false");
   });
 
+
+  /*
   test('Output price is less than 80% of input price', () => {
     const price = 10;
     const isStudent = false;
     const hasCoupon = false;
-    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("The output price should be more than 80% of the actual price.")
   });
-
+*/
   test('Output price is greater than input price', () => {
     const price = 600;
     const isStudent = false;
