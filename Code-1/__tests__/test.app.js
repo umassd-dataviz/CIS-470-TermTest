@@ -33,14 +33,14 @@ describe('calculatePrice function', () => {
     const price = -10;
     const isStudent = false;
     const hasCoupon = false;
-    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number");
   });
 
   test('Price is a string', () => {
     const price = "10";
     const isStudent = false;
     const hasCoupon = false;
-    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number");
   });
 
   test('isStudent is not boolean', () => {
@@ -57,19 +57,67 @@ describe('calculatePrice function', () => {
     expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid hasCoupon type: It should be either true or false");
   });
 
+  // test('Output price is less than 80% of input price', () => {
+  //   const price = 10;
+  //   const isStudent = false;
+  //   const hasCoupon = false;
+  //   expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("The output price should be more than 80% of the actual price.")
+  // });
 
-  /* let's ingore this for now!
-  test('Output price is less than 80% of input price', () => {
-    const price = 10;
-    const isStudent = false;
-    const hasCoupon = false;
-    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("The output price should be more than 80% of the actual price.")
-  });
-*/
   test('Output price is greater than input price', () => {
-    const price = 600;
+    const price = -600;
     const isStudent = false;
     const hasCoupon = false;
-    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number");
+  });
+
+  // New tests starting from here
+  test('Testing just below the min', () => {
+    const price = 0;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number");
+  });
+
+  test('Testing the min', () => {
+    const price = 1;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(1);
+  });
+
+  test('Testing just above the min', () => {
+    const price = 2;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(2);
+  });
+
+  test('Testing a center value', () => {
+    const price = 250;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(250);
+  });
+
+  test('Testing just below the max', () => {
+    const price = 498;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(498);
+  });
+
+  test('Testing the max', () => {
+    const price = 499;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(499);
+  });
+
+  test('Testing just above the max', () => {
+    const price = 500;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number");
   });
 });
