@@ -72,4 +72,54 @@ describe('calculatePrice function', () => {
     const hasCoupon = false;
     expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
   });
+
+  //------------------------------New Tests Start Here------------------------------
+  test('BVA test for min - 1', () => {
+    const price = 0;
+    const isStudent = false;
+    const hasCoupon = true;
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+  });
+
+  test('BVA test for min', () => {
+    const price = 1;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(1);
+  });
+
+  test('BVA test for min + 1', () => {
+    const price = 2;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(2);
+  });
+
+  test('BVA test for max - 1', () => {
+    const price = 498;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(498);
+  });
+
+  test('BVA test for max', () => {
+    const price = 499;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(499);
+  });
+
+  test('BVA test for max + 1', () => {
+    const price = 500;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+  });
+
+  test('BVA test for nominal price', () => {
+    const price = 376;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(376);
+  });
 });

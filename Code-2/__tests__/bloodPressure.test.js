@@ -12,13 +12,12 @@ describe('BloodPressure Function Tests', () => {
     });
 
     test('Empty Name', () => {
-      expect(() => BloodPressure("", 35, 120, 80)).toThrow('Name must be a non-empty string and l.');
+      expect(() => BloodPressure("", 35, 120, 80)).toThrow('Name must be a non-empty string.');
     });
 
-
-      test('Name equal to 50', () => {
-        expect(() => BloodPressure("MyNameIsTooLongItShouldBeLessThanFiftyCharacters--", 35, 120, 80)).not.toThrow('Name must be less than or equal to 50 characters.');
-      });
+    test('Name equal to 50', () => {
+      expect(() => BloodPressure("MyNameIsTooLongItShouldBeLessThanFiftyCharacters--", 35, 120, 80)).not.toThrow('Name must be less than or equal to 50 characters.');
+    });
 
     test('Non-string Name', () => {
       expect(() => BloodPressure(123, 35, 120, 80)).toThrow('Name must be a non-empty string.');
@@ -45,7 +44,7 @@ describe('BloodPressure Function Tests', () => {
     });
 
     test('Systolic Less Than Diastolic', () => {
-      expect(() => BloodPressure("John Doe", 35, 130, 120)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
+      expect(() => BloodPressure("John Doe", 35, 120, 130)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
     });
   });
 
@@ -80,11 +79,11 @@ describe('BloodPressure Function Tests', () => {
 
     // Test Cases for systolic and diastolic
     test('Minimum Valid Reading', () => {
-      expect(() => BloodPressure("John Doe", 35, 1, 1)).not.toThrow();
+      expect(() => BloodPressure("John Doe", 35, 2, 1)).not.toThrow();
     });
 
     test('Maximum Valid Reading', () => {
-      expect(() => BloodPressure("John Doe", 35, 500, 500)).not.toThrow();
+      expect(() => BloodPressure("John Doe", 35, 500, 499)).not.toThrow();
     });
 
     test('Reading Less Than Minimum', () => {
@@ -100,4 +99,21 @@ describe('BloodPressure Function Tests', () => {
     });
   });
 
+  describe('Added Student Tests', () => {
+    test('Getting stage 1 HBP - systolic', () => {
+      expect(() => BloodPressure("John Doe", 35, 150, 80)).not.toThrow();
+    });
+
+    test('Getting stage 2 HBP - systolic', () => {
+      expect(() => BloodPressure("John Doe", 35, 169, 80)).not.toThrow();
+    });
+
+    test('Getting stage 1 HBP - diastolic', () => {
+      expect(() => BloodPressure("John Doe", 35, 169, 91)).not.toThrow();
+    });
+
+    test('Getting stage 2 HBP - diastolic', () => {
+      expect(() => BloodPressure("John Doe", 35, 169, 101)).not.toThrow();
+    });
+  });
 });
