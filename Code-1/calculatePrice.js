@@ -18,6 +18,11 @@ function calculatePrice(price, isStudent, hasCoupon) {
         finalPrice *= 0.95; // 5% discount
       }
     }
+    /* we ignore this one for now
+    if(finalPrice<price*.08){
+      throw new Error("The output price should be more than 80% of the actual price.")
+    }
+  */ 
   
     return finalPrice;
   }
