@@ -72,4 +72,25 @@ describe('calculatePrice function', () => {
     const hasCoupon = false;
     expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
   });
+
+  test('Price is zero', () => {
+    const price = 0;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+  });
+  
+  test('Price is a positive decimal number, isStudent=true, hasCoupon=true', () => {
+    const price = 99.99;
+    const isStudent = true;
+    const hasCoupon = true;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBeCloseTo(79.992);
+  });
+  
+  test('Price is a large number, isStudent=false, hasCoupon=true', () => {
+    const price = 1000000;
+    const isStudent = false;
+    const hasCoupon = true;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(950000);
+  });
 });

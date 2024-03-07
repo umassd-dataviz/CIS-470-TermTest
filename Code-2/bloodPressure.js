@@ -29,7 +29,7 @@ function BloodPressure(patientName, patientAge,systolic,diastolic) {
       let systolicDiagnosis, diastolicDiagnosis;
 
       // Assign diagnoses based on readings
-      if (systolic > 120) {
+      if (systolic < 120) { //*******Changed to < from > because it should be less than 120 to be 'NORMAL'
         systolicDiagnosis = "NORMAL";
       } else if (systolic < 140) {
         systolicDiagnosis = "PREHYPERTENSION";
