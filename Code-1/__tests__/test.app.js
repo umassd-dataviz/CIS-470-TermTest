@@ -73,6 +73,8 @@ describe('calculatePrice function', () => {
     const hasCoupon = false;
     expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number & less than 500.");
   });
+  
+  //added new test cases
 
   test('Price below minimum (Invalid)', () => {
     const price = 0;
