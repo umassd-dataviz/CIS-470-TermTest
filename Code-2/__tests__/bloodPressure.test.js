@@ -37,6 +37,34 @@ describe('BloodPressure Function Tests', () => {
     test('Valid Readings', () => {
       expect(() => BloodPressure("John Doe", 35, 120, 80)).not.toThrow();
     });
+    test('Valid Readings with systolic under 120', () => {
+      expect(() => BloodPressure("John Doe", 35, 110, 80)).not.toThrow();
+    });
+    test('Valid Readings with systolic between 120 and 140', () => {
+      expect(() => BloodPressure("John Doe", 35, 110, 80)).not.toThrow();
+    });
+    test('Valid Readings with systolic between 140 and 160', () => {
+      expect(() => BloodPressure("John Doe", 35, 150, 80)).not.toThrow();
+    });
+    test('Valid Readings with systolic between 160 and 180', () => {
+      expect(() => BloodPressure("John Doe", 35, 170, 80)).not.toThrow();
+    });
+    test('Valid Readings with systolic over 180', () => {
+      expect(() => BloodPressure("John Doe", 35, 190, 80)).not.toThrow();
+    });
+
+    test('Valid Readings with diastolic under 80', () => {
+      expect(() => BloodPressure("John Doe", 35, 120, 70)).not.toThrow();
+    });
+    test('Valid Readings with diastolic between 80 and 90', () => {
+      expect(() => BloodPressure("John Doe", 35, 120, 85)).not.toThrow();
+    });
+    test('Valid Readings with diastolic between 90 and 100', () => {
+      expect(() => BloodPressure("John Doe", 35, 120, 95)).not.toThrow();
+    });
+    test('Valid Readings with diastolic between 100 and 110', () => {
+      expect(() => BloodPressure("John Doe", 35, 120, 105)).not.toThrow();
+    });
 
     test('Non-positive Readings', () => {
       expect(() => BloodPressure("John Doe", 35, 0, 80)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
