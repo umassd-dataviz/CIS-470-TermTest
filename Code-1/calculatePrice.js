@@ -14,18 +14,18 @@ function calculatePrice(price, isStudent, hasCoupon) {
 
     // Apply discounts based on conditions
     let finalPrice = price;
-    if (isStudent || hasCoupon) {
-      if (isStudent && hasCoupon) {
-        // Apply maximum discount for students with coupons
-        finalPrice *= 0.8; // 20% discount
-      } else if (isStudent) {
-        // Apply standard student discount
-        finalPrice *= 0.9; // 10% discount
-      } else if (hasCoupon) {
-        // Apply coupon discount
-        finalPrice *= 0.95; // 5% discount
-      }
+    
+    if (isStudent && hasCoupon) {
+      // Apply maximum discount for students with coupons
+      finalPrice *= 0.8; // 20% discount
+    } else if (isStudent) {
+      // Apply standard student discount
+      finalPrice *= 0.9; // 10% discount
+    } else if (hasCoupon) {
+      // Apply coupon discount
+      finalPrice *= 0.95; // 5% discount
     }
+    
   
     return finalPrice;
   }

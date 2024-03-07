@@ -22,22 +22,22 @@ function BloodPressure(patientName, patientAge,systolic,diastolic) {
         throw new Error("Age must be greater than or equal to 0 and less than 130.");
       }
       // validate systolic and diastolic
-      if (systolic <= 0 || diastolic <= 0 || systolic >500 || diastolic > 500 || systolic < diastolic) {
+      if (systolic <= 0 || diastolic <= 0 || systolic > 500 || diastolic > 500 || systolic < diastolic) {
         throw new Error("Invalid blood pressure readings: Must be positive and systolic > diastolic.");
       }
       // Temporary variables to hold diagnosis
       let systolicDiagnosis, diastolicDiagnosis;
 
       // Assign diagnoses based on readings
-      if (systolic > 120) {
+      if (systolic < 120) {
         systolicDiagnosis = "NORMAL";
       } else if (systolic < 140) {
         systolicDiagnosis = "PREHYPERTENSION";
       } else if (systolic < 160) {
         systolicDiagnosis = "STAGE_1_HBP";
-      } else if (systolic >= 160) {
+      } else if (systolic < 180) {
         systolicDiagnosis = "STAGE_2_HBP";
-      } else if (systolic > 180) {
+      } else if (systolic >= 180) {
         systolicDiagnosis = "HYPERTENSIVE_CRISIS";
       }
       if (diastolic < 80) {
@@ -46,9 +46,9 @@ function BloodPressure(patientName, patientAge,systolic,diastolic) {
         diastolicDiagnosis = "PREHYPERTENSION";
       } else if (diastolic < 100) {
         diastolicDiagnosis = "STAGE_1_HBP";
-      } else if (diastolic >= 100) {
+      } else if (diastolic < 110) {
         diastolicDiagnosis = "STAGE_2_HBP";
-      } else if (diastolic > 110) {
+      } else if (diastolic >= 110) {
         diastolicDiagnosis = "HYPERTENSIVE_CRISIS";
       }
 // Compare the severity levels of diastolic and systolic diagnoses

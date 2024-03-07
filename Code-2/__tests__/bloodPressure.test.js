@@ -47,6 +47,54 @@ describe('BloodPressure Function Tests', () => {
     test('Systolic Less Than Diastolic', () => {
       expect(() => BloodPressure("John Doe", 35, 130, 120)).not.toThrow();
     });
+
+    //Additional EC Test cases
+
+    //Systolic > 140 but < 160
+    test('Systolic > 140 but < 160', () => {
+      expect(BloodPressure("John Doe", 35, 150, 70)).toEqual("STAGE_1_HBP");
+    });
+
+    //Systolic > 160 but < 180
+    test('Systolic > 160 but < 180', () => {
+      expect(BloodPressure("John Doe", 35, 170, 70)).toBe('STAGE_2_HBP');
+    });
+
+    //Systolic > 180 but <500
+    test('Systolic = 180', () => {
+      expect(BloodPressure("John Doe", 35, 180, 70)).toBe('HYPERTENSIVE_CRISIS');
+    });
+
+    //Systolic > 180 but <500
+    test('Systolic > 180 but < 500', () => {
+      expect(BloodPressure("John Doe", 35, 200, 70)).toBe('HYPERTENSIVE_CRISIS');
+    });
+
+    //Diastolic < 100
+    test('Diastolic < 100', () => {
+      expect(BloodPressure("John Doe", 35, 90, 90)).toEqual("STAGE_1_HBP");
+    });
+
+    //Diastolic < 110
+    test('Diastolic < 110', () => {
+      expect(BloodPressure("John Doe", 35, 105, 105)).toBe('STAGE_2_HBP');
+    });
+
+    //Diastolic > 110
+    test('Diastolic = 110', () => {
+      expect(BloodPressure("John Doe", 35, 120, 110)).toBe('HYPERTENSIVE_CRISIS');
+    });
+
+    //Diastolic > 110
+    test('Diastolic > 110', () => {
+      expect(BloodPressure("John Doe", 35, 120, 115)).toBe('HYPERTENSIVE_CRISIS');
+    });
+
+    
+    test('Systolic > 180 & Diastolic > 110', () => {
+      expect(BloodPressure("John Doe", 35, 200, 120)).toBe('HYPERTENSIVE_CRISIS');
+    });
+
   });
 
   // Boundary Value Analysis (BVA) Test Cases

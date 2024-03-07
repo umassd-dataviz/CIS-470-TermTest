@@ -5,6 +5,7 @@ Line 18: comparison should be && not || as it needs both to be max discount (lin
 Line 21: should check ifStudent not ifCoupon (line 13 original)
 Last test case should be -600 not 600, or else the test case will never pass, or have it not throw an error, either is fine
 Added Test Cases for line 7 and line 11 additions to check isStudent and hasCoupon boolean/non-boolean values
+Line 17: Outer if statement is redundant and causes line 24 to not be checked properly
 
 -----bloodPressure Errors-----
 Line 21: Should be an || comparison between the ages
@@ -14,3 +15,8 @@ Test cases 7 & 8 (BVA) should not throw an error, but according to the requiremn
   - <span style="color:red;">"Error 03 - Invalid blood pressure readings: Must be positive and systolic > diastolic."</span>"
   NOTE: This presents an issue where if you check if they are equal, should throw an error according to the requirements, but not the test cases for min and max. To rectify this you have to make sure that the Equal case and test 7 & 8 of BVA do not throw an error as to test mins and maxs they must be equal as to not throw an error for systolic being greater than diastolic
 Line 25: There must be a check for the maximum in order for max vlaue test cases to be applied
+Line 38: change from systolic >= 160 to systolic < 180
+Line 40: changed from > 180 to >= 180
+Line 49: change from diastolic >= 100 to distolic < 110
+line 51: changed from > 110 to >= 110
+Added test coverage for ECP
