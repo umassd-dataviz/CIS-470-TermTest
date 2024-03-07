@@ -2,16 +2,16 @@
 
 ## Part 1
 
- 1. Draw the Flow Graph for each one of the codes (Code-1 and Code-2) and upload in myCourses (20 Points)
+ 1. Draw the Flow Graph for each one of the codes (Code-1 and Code-2) and upload in myCourses. (20 Points)
 
- 2. Identify every unique path for the provided codes and upload in myCourses
+ 2. Identify every unique path for the provided codes and upload in myCourses. (20 Points)
  e.g. {
   Path_1: [1,2,3...],
   Path_2: [1,2,3...],
-  ...
- }(20 Points)
+  ...}
+  
 
- You can add the Flow Graphs and Paths in 1 Word Document or PDF and upload in myCourses
+ **You can add the Flow Graphs and Paths in 1 Word Document or PDF and upload in myCourses**
 
 ## Part 2
 
