@@ -58,7 +58,7 @@ describe('calculatePrice function', () => {
   });
 
 
-  /*
+  /* let's ingore this for now!
   test('Output price is less than 80% of input price', () => {
     const price = 10;
     const isStudent = false;
