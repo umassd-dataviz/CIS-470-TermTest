@@ -1,8 +1,23 @@
 # Practical Term Test (CIS 470) 
 
-Total points: 60
+## Part 1
 
-This Repo contains two codes (Code-1 and Code-2) for the practical Exam of CIS 470. The Questions related to the code are provided in myCourses, the deliverables are also provided below. You can run the codes on Codespaces, or download and run them using NodeJS.
+ 1. Draw the Flow Graph for each one of the codes (Code-1 and Code-2) and upload in myCourses (20 Points)
+
+ 2. Identify every unique path for the provided codes and upload in myCourses
+ e.g. {
+  Path_1: [1,2,3...],
+  Path_2: [1,2,3...],
+  ...
+ }(20 Points)
+
+ You can add the Flow Graphs and Paths in 1 Word Document or PDF and upload in myCourses
+
+## Part 2
+
+### Follow the steps below to run the codes (60 points)
+
+This Repo contains two codes (Code-1 and Code-2) for the practical Exam of CIS 470. You can run the codes on Codespaces, or download and run them using NodeJS.
 
 In each directory you will find a `README.md` file, along with related JavaScript function file, a runner (`app.js`) and a Unit-Testing directory `__tests__` that contains a set of test 
 
