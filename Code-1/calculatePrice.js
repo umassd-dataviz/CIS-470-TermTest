@@ -10,7 +10,7 @@ function calculatePrice(price, isStudent, hasCoupon) {
       if (isStudent || hasCoupon) {
         // Apply maximum discount for students with coupons
         finalPrice *= 0.8; // 20% discount
-      } else if (hasCoupon) {
+      } else if (isStudent) {
         // Apply standard student discount
         finalPrice *= 0.9; // 10% discount
       } else if (hasCoupon) {
