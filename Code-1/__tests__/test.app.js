@@ -61,7 +61,7 @@ describe('calculatePrice function', () => {
     const price = 10;
     const isStudent = false;
     const hasCoupon = false;
-    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(10);
   });
 
   test('Output price is greater than input price', () => {
