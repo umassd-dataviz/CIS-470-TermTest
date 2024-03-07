@@ -1,6 +1,6 @@
 // Important: This code had intentional errors which are detected by the tests cases.
 
-function BloodPressure(patientName, patientAge,systolic,diastolic) {
+function BloodPressure(patientName, patientAge, systolic, diastolic) {
 
   const severityLevels = {
     "NORMAL": 0,
@@ -18,7 +18,7 @@ function BloodPressure(patientName, patientAge,systolic,diastolic) {
         throw new Error("Name must be less than or equal to 50 characters.");
       }
       // Validate age
-      if (patientAge < 0 && patientAge >= 130) {
+      if (patientAge < 0 || patientAge >= 130) {
         throw new Error("Age must be greater than or equal to 0 and less than 130.");
       }
       // validate systolic and diastolic
@@ -29,15 +29,15 @@ function BloodPressure(patientName, patientAge,systolic,diastolic) {
       let systolicDiagnosis, diastolicDiagnosis;
 
       // Assign diagnoses based on readings
-      if (systolic > 120) {
+      if (systolic < 120) {
         systolicDiagnosis = "NORMAL";
       } else if (systolic < 140) {
         systolicDiagnosis = "PREHYPERTENSION";
       } else if (systolic < 160) {
         systolicDiagnosis = "STAGE_1_HBP";
-      } else if (systolic >= 160) {
+      } else if (systolic <= 180) {
         systolicDiagnosis = "STAGE_2_HBP";
-      } else if (systolic > 180) {
+      } else {
         systolicDiagnosis = "HYPERTENSIVE_CRISIS";
       }
       if (diastolic < 80) {
@@ -46,9 +46,9 @@ function BloodPressure(patientName, patientAge,systolic,diastolic) {
         diastolicDiagnosis = "PREHYPERTENSION";
       } else if (diastolic < 100) {
         diastolicDiagnosis = "STAGE_1_HBP";
-      } else if (diastolic >= 100) {
+      } else if (diastolic <= 110) {
         diastolicDiagnosis = "STAGE_2_HBP";
-      } else if (diastolic > 110) {
+      } else {
         diastolicDiagnosis = "HYPERTENSIVE_CRISIS";
       }
 // Compare the severity levels of diastolic and systolic diagnoses
