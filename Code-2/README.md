@@ -31,10 +31,6 @@ The function must validate all of the input parameters (`patientName`, `patientA
 - `systolic` and `diastolic` must be of type Number, should be more than 0, and `systolic` should be greater than `diastolic`. If not, it should raise an error with the following message:
   - <span style="color:red;">"Error 03 - Invalid blood pressure readings: Must be positive and systolic > diastolic."</span>
 
-
-
-
-
 ### Returns
 
 - (string): The diagnosis based on the blood pressure readings.
@@ -48,5 +44,4 @@ The function must validate all of the input parameters (`patientName`, `patientA
 1. Validates the patient's name. Throws an error if the name is not a non-empty string.
 2. Validates the patient's age. Throws an error if the age is less than 0.
 3. Validates the systolic and diastolic blood pressure readings. Throws an error if they are not positive or if systolic is less than or equal to diastolic.
-
-5. Compares the severity of systolic and diastolic diagnoses and returns the diagnosis with the higher severity level.
+4. Compares the severity of systolic and diastolic diagnoses and returns the diagnosis with the higher severity level.
