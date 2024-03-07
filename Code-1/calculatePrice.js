@@ -7,10 +7,10 @@ function calculatePrice(price, isStudent, hasCoupon) {
     // Apply discounts based on conditions
     let finalPrice = price;
     if (isStudent || hasCoupon) {
-      if (isStudent || hasCoupon) {
+      if (isStudent && hasCoupon) {  //**********Changed from || to && because both need to be true
         // Apply maximum discount for students with coupons
         finalPrice *= 0.8; // 20% discount
-      } else if (hasCoupon) {
+      }else if (isStudent) { //**********Changed from hasCoupon to isStudent because isStudent gets 10% discount
         // Apply standard student discount
         finalPrice *= 0.9; // 10% discount
       } else if (hasCoupon) {

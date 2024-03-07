@@ -98,6 +98,18 @@ describe('BloodPressure Function Tests', () => {
     test('Systolic Less Than Diastolic', () => {
       expect(() => BloodPressure("John Doe", 35, 120, 130)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
     });
+
+    test('Systolic Equal to 120', () => {
+      expect(() => BloodPressure("John Doe", 35, 120, 80)).not.toThrow(); //behavior when the systolic blood pressure is at the boundary value of 120, which is the threshold for being classified as "NORMAL."
+    });
+    
+    test('Diastolic Equal to 80', () => {
+      expect(() => BloodPressure("John Doe", 35, 120, 80)).not.toThrow(); //behavior when the diastolic blood pressure is at the boundary value of 80, which is the threshold for being classified as "NORMAL."
+    });
+
+    test('Maximum Systolic Reading', () => {
+      expect(() => BloodPressure("John Doe", 35, 500, 120)).not.toThrow();//behavior when the systolic blood pressure is at the maximum valid reading, which is 500.
+    });
   });
 
 });
