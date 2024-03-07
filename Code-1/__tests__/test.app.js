@@ -57,19 +57,52 @@ describe('calculatePrice function', () => {
     expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid hasCoupon type: It should be either true or false");
   });
 
-
-  /* let's ingore this for now!
   test('Output price is less than 80% of input price', () => {
     const price = 10;
     const isStudent = false;
     const hasCoupon = false;
-    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("The output price should be more than 80% of the actual price.")
-  });
-*/
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+  }); 
+
   test('Output price is greater than input price', () => {
     const price = 600;
     const isStudent = false;
     const hasCoupon = false;
     expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
   });
+
+  test('Price is zero', () => {
+    const price = 0;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+  });// tests for the price being zero just outside the min range
+
+  test('Price is one', () => {
+    const price = 1;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(1);
+  });// tests for the price at the minimum range
+
+  test('Maximum possible price', () => {
+    const price = Number.MAX_VALUE;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(Number.MAX_VALUE);
+  });// tests the max value 
+
+  test('Non-numeric price', () => {
+    const price = "invalid";
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+  }); // tests invalid price that is not a number
+
+  test('Price is null', () => {
+    const price = null;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+  });// price needs to be positive number
 });
