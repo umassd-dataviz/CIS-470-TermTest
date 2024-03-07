@@ -19,7 +19,7 @@ function calculatePrice(price, isStudent, hasCoupon) {
       }
     }
     /* we ignore this one for now
-    if(finalPrice<price*.08){
+    if(finalPrice<price*.8){
       throw new Error("The output price should be more than 80% of the actual price.")
     }
   */ 
