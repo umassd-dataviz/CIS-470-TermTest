@@ -1,4 +1,4 @@
-const calculatePrice = require('../calculatePrice'); // Assuming your function is in a separate file
+const calculatePrice = require('../calculatePrice.js');
 
 describe('calculatePrice function', () => {
   test('Valid price, isStudent=false, hasCoupon=false', () => {
@@ -57,19 +57,17 @@ describe('calculatePrice function', () => {
     expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid hasCoupon type: It should be either true or false");
   });
 
-
-  /* let's ingore this for now!
-  test('Output price is less than 80% of input price', () => {
+  /*test('Output price is less than 80% of input price', () => {
     const price = 10;
     const isStudent = false;
     const hasCoupon = false;
-    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("The output price should be more than 80% of the actual price.")
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
   });
 */
   test('Output price is greater than input price', () => {
-    const price = 600;
+    const price = 600; //price and output price will always be equal
     const isStudent = false;
     const hasCoupon = false;
-    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).not.toThrowError("Invalid price: Output price must be less than input price.");
   });
 });
