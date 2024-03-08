@@ -12,7 +12,7 @@ describe('BloodPressure Function Tests', () => {
     });
 
     test('Empty Name', () => {
-      expect(() => BloodPressure("", 35, 120, 80)).toThrow('Name must be a non-empty string and l.');
+      expect(() => BloodPressure("", 35, 120, 80)).toThrow('Name must be a non-empty string.');
     });
 
 
@@ -44,8 +44,8 @@ describe('BloodPressure Function Tests', () => {
       expect(() => BloodPressure("John Doe", 35, 0, 0)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
     });
 
-    test('Systolic Less Than Diastolic', () => {
-      expect(() => BloodPressure("John Doe", 35, 130, 120)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
+    test('Valid', () => {
+      expect(() => BloodPressure("John Doe", 35, 130, 120)).not.toThrow();
     });
   });
 
@@ -80,11 +80,11 @@ describe('BloodPressure Function Tests', () => {
 
     // Test Cases for systolic and diastolic
     test('Minimum Valid Reading', () => {
-      expect(() => BloodPressure("John Doe", 35, 1, 1)).not.toThrow();
+      expect(() => BloodPressure("John Doe", 35, 1, 1)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
     });
 
     test('Maximum Valid Reading', () => {
-      expect(() => BloodPressure("John Doe", 35, 500, 500)).not.toThrow();
+      expect(() => BloodPressure("John Doe", 35, 500, 500)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
     });
 
     test('Reading Less Than Minimum', () => {
@@ -98,6 +98,57 @@ describe('BloodPressure Function Tests', () => {
     test('Systolic Less Than Diastolic', () => {
       expect(() => BloodPressure("John Doe", 35, 120, 130)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
     });
+
+// Misc Test Cases
+
+// Test for non-numeric systolic and diastolic readings
+test('Non-numeric systolic and diastolic readings', () => {
+  expect(() => BloodPressure("John Doe", 35, "120", "80")).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
+});
+
+// Test for non-numeric age
+test('Non-numeric age', () => {
+  expect(() => BloodPressure("John Doe", "35", 120, 80)).toThrow('Age must be number');
+});
+
+// Test cases for different diagnoses
+test('Diagnosis: NORMAL', () => {
+  expect(BloodPressure("John Doe", 35, 110, 70)).toBe("NORMAL");
+});
+
+test('Diagnosis: PREHYPERTENSION', () => {
+  expect(BloodPressure("John Doe", 35, 130, 85)).toBe("PREHYPERTENSION");
+});
+
+test('Diagnosis: STAGE_1_HBP', () => {
+  expect(BloodPressure("John Doe", 35, 150, 95)).toBe("STAGE_1_HBP");
+});
+
+test('Diagnosis: STAGE_2_HBP', () => {
+  expect(BloodPressure("John Doe", 35, 170, 105)).toBe("STAGE_2_HBP");
+});
+
+test('Diagnosis: HYPERTENSIVE_CRISIS', () => {
+  expect(BloodPressure("John Doe", 35, 190, 120)).toBe("HYPERTENSIVE_CRISIS");
+});
+
+// Test case for diastolic diagnosis more severe than systolic
+test('Diastolic diagnosis more severe', () => {
+  expect(BloodPressure("John Doe", 35, 150, 105)).toBe("STAGE_2_HBP");
+});
+
+// Test case for systolic diagnosis more severe than diastolic
+test('Systolic diagnosis more severe', () => {
+  expect(BloodPressure("John Doe", 35, 170, 95)).toBe("STAGE_2_HBP");
+});
+
+// Test case for equal severity diagnoses
+test('Equal severity diagnoses', () => {
+  expect(BloodPressure("John Doe", 35, 160, 100)).toBe("STAGE_2_HBP");
+});
+
+
+
   });
 
 });
