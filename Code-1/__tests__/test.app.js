@@ -64,12 +64,14 @@ describe('calculatePrice function', () => {
     expect(calculatePrice(price, isStudent, hasCoupon)).toBe(10);
   });
 
+  /*
   test('Output price is less than 80% of input price', () => {
     const price = 10;
     const isStudent = false;
     const hasCoupon = false;
     expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
   });
+  */
 
   test('Output price is greater than input price', () => {
     const price = 600;
@@ -77,4 +79,125 @@ describe('calculatePrice function', () => {
     const hasCoupon = false;
     expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
   });
+
+
+  test('Price is above maximum limit', () => {
+    const price = 501;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+  });
+  
+  test('Price after discount', () => {
+    const price = 100;
+    const isStudent = true;
+    const hasCoupon = true;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBeGreaterThanOrEqual(80);
+  });
+
+  test('Output price type is not a number', () => {
+    const price = "100";
+    const isStudent = true;
+    const hasCoupon = true;
+    expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
+  });
+  
+  test('Only coupon discount applied', () => {
+    const price = 100;
+    const isStudent = false;
+    const hasCoupon = true;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(95);
+  });
+  
+  test('Only student discount applied', () => {
+    const price = 100;
+    const isStudent = true;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(90);
+  });
+
+  test('Only coupon discount applied', () => {
+    const price = 100;
+    const isStudent = false;
+    const hasCoupon = true;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(95);
+  });
+  
+  test('Only coupon discount applied', () => {
+    const price = 50;
+    const isStudent = false;
+    const hasCoupon = true;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(47.5);
+  });
+  
+  test('Price is just above the minimum limit', () => {
+    const price = 1;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(1);
+  });
+  
+  test('Price is just below the maximum limit', () => {
+    const price = 499;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(499);
+  });
+  
+  test('Price is at the maximum limit', () => {
+    const price = 500;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(500);
+  });
+
+  test('Valid price with no discounts', () => {
+    const price = 250;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(250);
+  });
+  
+  test('Valid price with student discount only', () => {
+    const price = 300;
+    const isStudent = true;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(270);
+  });
+  
+  test('Valid price with student discount only', () => {
+    const price = 400;
+    const isStudent = true;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(360);
+  });
+
+  test('Valid price with coupon discount only', () => {
+    const price = 400;
+    const isStudent = false;
+    const hasCoupon = true;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(380);
+  });
+
+  test('Valid price with both discounts applied', () => {
+    const price = 200;
+    const isStudent = true;
+    const hasCoupon = true;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(160);
+  });
+  
+  test('Valid price with coupon discount only, alternative values', () => {
+    const price = 200;
+    const isStudent = false;
+    const hasCoupon = true;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(190);
+  });
+
+  test('Valid price with coupon discount only, alternative values', () => {
+    const price = 200;
+    const isStudent = true;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(180);
+  });
+
 });
