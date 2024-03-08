@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1709868126907" clover="3.2.0">
+  <project timestamp="1709868126907" name="All files">
+    <metrics statements="15" coveredstatements="15" conditionals="16" coveredconditionals="16" methods="1" coveredmethods="1" elements="32" coveredelements="32" complexity="0" loc="15" ncloc="15" packages="1" files="1" classes="1"/>
+    <file name="calculatePrice.js" path="/workspaces/CIS-470-TermTest/Code-1/calculatePrice.js">
+      <metrics statements="15" coveredstatements="15" conditionals="16" coveredconditionals="16" methods="1" coveredmethods="1"/>
+      <line num="3" count="15" type="cond" truecount="4" falsecount="0"/>
+      <line num="4" count="4" type="stmt"/>
+      <line num="8" count="11" type="cond" truecount="2" falsecount="0"/>
+      <line num="9" count="2" type="stmt"/>
+      <line num="11" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="16" count="8" type="stmt"/>
+      <line num="17" count="8" type="cond" truecount="4" falsecount="0"/>
+      <line num="19" count="2" type="stmt"/>
+      <line num="20" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="23" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="28" count="8" type="stmt"/>
+      <line num="31" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
