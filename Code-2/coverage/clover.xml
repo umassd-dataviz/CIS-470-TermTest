@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1709865693810" clover="3.2.0">
+  <project timestamp="1709865693810" name="All files">
+    <metrics statements="31" coveredstatements="31" conditionals="33" coveredconditionals="33" methods="1" coveredmethods="1" elements="65" coveredelements="65" complexity="0" loc="31" ncloc="31" packages="1" files="1" classes="1"/>
+    <file name="bloodPressure.js" path="/workspaces/CIS-470-TermTest/Code-2/bloodPressure.js">
+      <metrics statements="31" coveredstatements="31" conditionals="33" coveredconditionals="33" methods="1" coveredmethods="1"/>
+      <line num="2" count="33" type="stmt"/>
+      <line num="11" count="33" type="cond" truecount="4" falsecount="0"/>
+      <line num="12" count="2" type="stmt"/>
+      <line num="14" count="31" type="cond" truecount="2" falsecount="0"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="18" count="30" type="cond" truecount="4" falsecount="0"/>
+      <line num="19" count="3" type="stmt"/>
+      <line num="22" count="27" type="cond" truecount="5" falsecount="0"/>
+      <line num="23" count="9" type="stmt"/>
+      <line num="29" count="18" type="cond" truecount="2" falsecount="0"/>
+      <line num="30" count="6" type="stmt"/>
+      <line num="31" count="12" type="cond" truecount="2" falsecount="0"/>
+      <line num="32" count="8" type="stmt"/>
+      <line num="33" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="35" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="36" count="1" type="stmt"/>
+      <line num="38" count="2" type="stmt"/>
+      <line num="41" count="18" type="cond" truecount="2" falsecount="0"/>
+      <line num="42" count="8" type="stmt"/>
+      <line num="43" count="10" type="cond" truecount="2" falsecount="0"/>
+      <line num="44" count="7" type="stmt"/>
+      <line num="45" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="46" count="1" type="stmt"/>
+      <line num="47" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="48" count="1" type="stmt"/>
+      <line num="50" count="1" type="stmt"/>
+      <line num="54" count="18" type="cond" truecount="2" falsecount="0"/>
+      <line num="55" count="3" type="stmt"/>
+      <line num="57" count="15" type="stmt"/>
+      <line num="62" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
