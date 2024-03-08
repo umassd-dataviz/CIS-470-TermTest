@@ -12,7 +12,7 @@ describe('BloodPressure Function Tests', () => {
     });
 
     test('Empty Name', () => {
-      expect(() => BloodPressure("", 35, 120, 80)).toThrow('Name must be a non-empty string and l.');
+      expect(() => BloodPressure("", 35, 120, 80)).toThrow('Name must be a non-empty string');
     });
 
 
@@ -45,7 +45,31 @@ describe('BloodPressure Function Tests', () => {
     });
 
     test('Systolic Less Than Diastolic', () => {
-      expect(() => BloodPressure("John Doe", 35, 130, 120)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
+      expect(() => BloodPressure("John Doe", 35, 120, 130)).toThrow('Invalid blood pressure readings: Must be positive and systolic > diastolic.');
+    });
+    // ECP TESTS
+    test('NORMAL diagnostic', () => {
+      expect(BloodPressure("John Doe", 35, 100, 60)).toBe("NORMAL");
+    });
+    test('PREHYPERTENSION diagnostic', () => {
+      expect(BloodPressure("John Doe", 35, 130, 85)).toBe("PREHYPERTENSION");
+    });
+    test('STAGE_1_HBP diagnostic', () => {
+      expect(BloodPressure("John Doe", 35, 150, 95)).toBe("STAGE_1_HBP");
+    });
+    test('STAGE_2_HBP diagnostic', () => {
+      expect(BloodPressure("John Doe", 35, 165, 100)).toBe("STAGE_2_HBP");
+    });
+    test('Additional STAGE_2_HBP diagnostic', () => {
+      expect(BloodPressure("John Doe", 35, 165, 105)).toBe("STAGE_2_HBP");
+    });
+    test('HYPERTENSIVE_CRISIS diagnostic', () => {
+      expect(BloodPressure("John Doe", 35, 200, 120)).toBe("HYPERTENSIVE_CRISIS");
+    });
+
+    //Test systolicDiagnosis return
+    test('Systolic diagnostic', () => {
+      expect(BloodPressure("John Doe", 35, 160, 80)).toBe("STAGE_2_HBP");
     });
   });
 
@@ -80,11 +104,11 @@ describe('BloodPressure Function Tests', () => {
 
     // Test Cases for systolic and diastolic
     test('Minimum Valid Reading', () => {
-      expect(() => BloodPressure("John Doe", 35, 1, 1)).not.toThrow();
+      expect(() => BloodPressure("John Doe", 35, 4, 1)).not.toThrow();
     });
 
-    test('Maximum Valid Reading', () => {
-      expect(() => BloodPressure("John Doe", 35, 500, 500)).not.toThrow();
+    test('Minimum Valid Reading', () => {
+      expect(() => BloodPressure("John Doe", 35, 1, 0.5)).not.toThrow();
     });
 
     test('Reading Less Than Minimum', () => {

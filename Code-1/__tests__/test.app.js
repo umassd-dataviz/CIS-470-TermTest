@@ -29,6 +29,63 @@ describe('calculatePrice function', () => {
     expect(calculatePrice(price, isStudent, hasCoupon)).toBe(80);
   });
 
+  //BVA
+  test('Valid price min, isStudent=true, hasCoupon=true', () => {
+    const price = 1;
+    const isStudent = true;
+    const hasCoupon = true;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(0.8);
+  });
+
+  test('Valid price min, isStudent=false, hasCoupon=true', () => {
+    const price = 1;
+    const isStudent = false;
+    const hasCoupon = true;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(0.95);
+  });
+
+  test('Valid price min, isStudent=true, hasCoupon=false', () => {
+    const price = 1;
+    const isStudent = true;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(0.9);
+  });
+  
+  test('Valid price min, isStudent=false, hasCoupon=false', () => {
+    const price = 1;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(1);
+  });
+
+  test('Valid price max, isStudent=false, hasCoupon=false', () => {
+    const price = 499;
+    const isStudent = false;
+    const hasCoupon = false;
+    expect(calculatePrice(price, isStudent, hasCoupon)).toBe(499);
+  });
+
+    test('Valid price max, isStudent=false, hasCoupon=true', () => {
+      const price = 499;
+      const isStudent = false;
+      const hasCoupon = true;
+      expect(calculatePrice(price, isStudent, hasCoupon)).toBe(474.04999999999995);
+    });
+
+      test('Valid price max, isStudent=true, hasCoupon=false', () => {
+        const price = 499;
+        const isStudent = true;
+        const hasCoupon = false;
+        expect(calculatePrice(price, isStudent, hasCoupon)).toBe(449.1);
+      });
+
+        test('Valid price max, isStudent=true, hasCoupon=true', () => {
+          const price = 499;
+          const isStudent = true;
+          const hasCoupon = true;
+          expect(calculatePrice(price, isStudent, hasCoupon)).toBe(399.20000000000005);
+        });
+
   test('Price is a negative number', () => {
     const price = -10;
     const isStudent = false;
