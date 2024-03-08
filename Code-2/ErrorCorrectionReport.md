@@ -1,5 +1,7 @@
 Code 2:
+
 i)	Condition for checking age was buggy. It was fixed
+
  
 ii)	There were some bugs in checking systolic range. That was resolved. 
 
