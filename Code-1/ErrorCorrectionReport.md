@@ -1,5 +1,7 @@
 Code 1:
+
 Bugs:
+
 i)	“isStudent && hasCoupon “. It had “||” instead of “&&”. 
 
 ii)	Both else if checked ‘hasCoupon’. One should check isStudent. 
