@@ -18,35 +18,35 @@ function BloodPressure(patientName, patientAge,systolic,diastolic) {
         throw new Error("Name must be less than or equal to 50 characters.");
       }
       // Validate age
-      if (patientAge < 0 && patientAge >= 130) {
+      if (typeof patientAge !== "number" || patientAge < 0 || patientAge >= 130) {
         throw new Error("Age must be greater than or equal to 0 and less than 130.");
       }
       // validate systolic and diastolic
-      if (systolic <= 0 || diastolic <= 0 || systolic <= diastolic) {
+     if (typeof systolic !== "number" || typeof diastolic !== "number" || systolic <= 0 || diastolic <= 0 || systolic <= diastolic) {
         throw new Error("Invalid blood pressure readings: Must be positive and systolic > diastolic.");
       }
       // Temporary variables to hold diagnosis
       let systolicDiagnosis, diastolicDiagnosis;
 
       // Assign diagnoses based on readings
-      if (systolic > 120) {
+      if (systolic < 120) {
         systolicDiagnosis = "NORMAL";
-      } else if (systolic < 140) {
+      } else if (systolic >= 120 && systolic < 140) {
         systolicDiagnosis = "PREHYPERTENSION";
-      } else if (systolic < 160) {
+      } else if (systolic >= 140 && systolic < 160) {
         systolicDiagnosis = "STAGE_1_HBP";
-      } else if (systolic >= 160) {
+      } else if (systolic >= 160 &&  systolic <= 180) {
         systolicDiagnosis = "STAGE_2_HBP";
       } else if (systolic > 180) {
         systolicDiagnosis = "HYPERTENSIVE_CRISIS";
       }
       if (diastolic < 80) {
         diastolicDiagnosis = "NORMAL";
-      } else if (diastolic < 90) {
+      } else if (diastolic >= 80 && diastolic < 90) {
         diastolicDiagnosis = "PREHYPERTENSION";
-      } else if (diastolic < 100) {
+      } else if (diastolic >= 90 && diastolic < 100) {
         diastolicDiagnosis = "STAGE_1_HBP";
-      } else if (diastolic >= 100) {
+      } else if (diastolic >= 100 && diastolic <= 110) {
         diastolicDiagnosis = "STAGE_2_HBP";
       } else if (diastolic > 110) {
         diastolicDiagnosis = "HYPERTENSIVE_CRISIS";

@@ -72,4 +72,64 @@ describe('calculatePrice function', () => {
     const hasCoupon = false;
     expect(() => calculatePrice(price, isStudent, hasCoupon)).toThrowError("Invalid price: Price must be a positive number.");
   });
+
+  // BVA: Boundary Value Analysis
+  // Test case: Price at minimum valid value
+  test('BVA: Price at minimum valid value (just more than 0)', () => {
+    // Description: Tests the function with the lowest possible valid price
+    // This tests the boundary at the low end of the price range
+    expect(calculatePrice(0.01, false, false)).toBeCloseTo(0.01);
+  });
+
+  // Test case: Price at maximum valid value
+  test('BVA: Price at maximum valid value (just less than 500)', () => {
+    // Description: Tests the function with the highest possible valid price
+    // This tests the boundary at the high end of the price range
+    expect(calculatePrice(499.99, false, false)).toBeCloseTo(499.99);
+  });
+
+  // Test case: Price more than max
+  test('BVA: Price more than maximum valid value', () => {
+    // Description: Tests the function with a price above the valid range
+    // Expecting an error since the price exceeds the maximum limit
+    expect(() => calculatePrice(500.01, false, false)).toThrowError();
+  });
+
+  // Test case: Price less than min
+  test('BVA: Price less than minimum valid value', () => {
+    // Description: Tests the function with a price below the valid range
+    // Expecting an error since the price is below the minimum limit
+    expect(() => calculatePrice(-1, false, false)).toThrowError();
+  });
+
+  // ECP: Equivalence Class Partitioning
+  // Valid Class
+  test('ECP: Valid price with student discount', () => {
+    // Description: Tests the function with a valid price and student status
+    // Represents a valid class of inputs where discounts apply
+    expect(calculatePrice(100, true, false)).toBe(90); // Assuming 10% student discount
+  });
+
+  // Invalid Class
+  test('ECP: Invalid type for isStudent', () => {
+    // Description: Tests the function with an invalid type for isStudent
+    // This represents an invalid class of inputs for isStudent
+    expect(() => calculatePrice(100, 'true', false)).toThrowError();
+  });
+
+  // Decision Table
+  // Valid Case
+  test('Decision Table: Student with Coupon', () => {
+    // Description: Tests combination of being a student and having a coupon
+    // This case tests the application of both discounts
+    expect(calculatePrice(100, true, true)).toBe(80); // Assuming cumulative discount
+  });
+
+  // Invalid Case
+  test('Decision Table: Invalid inputs for both isStudent and hasCoupon', () => {
+    // Description: Tests with invalid types for both isStudent and hasCoupon
+    // This tests handling of multiple invalid inputs together
+    expect(() => calculatePrice(100, 'true', 'true')).toThrowError();
+  });
 });
+
